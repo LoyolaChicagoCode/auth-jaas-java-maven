@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <!-- first match wins, so the more specific constraints must come first -->
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Logout page</web-resource-name>
+      <url-pattern>/index.jsp</url-pattern>
+      <url-pattern>/logout.jsp</url-pattern>
+    </web-resource-collection>
+<!--
+    <auth-constraint>
+      <role-name>guests</role-name>
+   </auth-constraint>
+-->
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin page</web-resource-name>
+      <url-pattern>/admin.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>administrators</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Entire application</web-resource-name>
+<!--
+      <url-pattern>*.jsp</url-pattern>
+-->
+      <url-pattern>/</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>users</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>JAAS Auth Example</realm-name>
+    <form-login-config>
+      <form-login-page>/login.jsp</form-login-page>
+      <form-error-page>/error.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-role>
+    <role-name>administrators</role-name>
+  </security-role>
+
+  <security-role>
+    <role-name>users</role-name>
+  </security-role>
+
+  <security-role>
+    <role-name>guests</role-name>
+  </security-role>
+
+</web-app>
