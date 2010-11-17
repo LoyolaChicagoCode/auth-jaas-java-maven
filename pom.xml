@@ -26,10 +26,8 @@
 						<systemProperty>
 							<name>java.security.auth.login.config</name>
 							<value>${basedir}/src/main/config/jetty-login.conf</value>
-							<!--
-							<value>${basedir}/src/main/config/jetty-login-datasource.conf</value>
-							<value>${basedir}/src/main/config/jetty-login-db4o.conf</value>
-							-->
+							<!-- <value>${basedir}/src/main/config/jetty-login-datasource.conf</value>
+								<value>${basedir}/src/main/config/jetty-login-db4o.conf</value> -->
 						</systemProperty>
 					</systemProperties>
 					<userRealms>
@@ -50,10 +48,16 @@
 		</plugins>
 	</build>
 	<repositories>
+<!--
 		<repository>
 			<id>maven-etl</id>
 			<name>Loyola ETL repository</name>
 			<url>http://maven.etl.luc.edu/artifactory/repo/</url>
+		</repository>
+ -->
+		<repository>
+			<id>source.db4o</id>
+			<url>http://source.db4o.com/maven</url>
 		</repository>
 	</repositories>
 	<dependencies>
